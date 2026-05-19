@@ -1,0 +1,4 @@
+resource_group_name = "terraform-infra-prod-RG"
+location            = "westus2"
+admin_username      = "azureuser"
+trusted_ip          = "0.0.0.0/0"

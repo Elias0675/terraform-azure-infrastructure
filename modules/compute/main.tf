@@ -52,7 +52,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   name                = "terraform-vmss"
   resource_group_name = var.resource_group_name
   location            = var.location
-  sku                 = "Standard_B2s"
+  sku                 = "Standard_D2als_v7"
   instances           = 1
   admin_username      = "azureuser"
   upgrade_mode        = "Manual"
@@ -65,7 +65,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    sku       = "22_04-lts-gen2"
     version   = "latest"
   }
 
@@ -93,4 +93,8 @@ resource "tls_private_key" "ssh" {
 
 output "lb_public_ip" {
   value = azurerm_public_ip.lb_pip.ip_address
+}
+
+output "lb_id" {
+  value = azurerm_lb.lb.id
 }
